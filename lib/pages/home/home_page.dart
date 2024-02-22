@@ -20,6 +20,48 @@ class _HomePageState extends State<HomePage> {
     final width = MediaQuery.of(context).size.width;
     final higth = MediaQuery.of(context).size.height;
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(children: [
+          FadeInLeft(
+            duration: Duration(seconds: 1),
+            child: Image(
+              image: AssetImage("assets/logo/RUPP_logo.png"),
+              width: 100,
+              height: 100,
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "អំពីកម្មវិធី",
+              style: TextStyle(fontFamily: "KhmerOSMoul"),
+            ),
+          ),
+          FadeInUp(
+            duration: Duration(seconds: 1),
+            child: ListTile(
+              title: Text(
+                "     កម្មវិធីនេះបង្កើតឡើងដើម្បីជួយ\nសម្រួលដែលប្រធានក្រុម ឬអ្នកចាត់ចែងការងារឲ្យកូនក្រុម ងាយស្រួលក្នុងការដាក់ផែនការការងារនិងគ្រប់គ្រងបុគ្គលិកក្នុងផ្នែកនីមួយៗ។ ដោយកម្មវីធីនិងចាត់ចែងការងារឲ្យបុគ្គលិកតាមពេលវេលាកំណត់និង លទ្ធភាពរបស់បុគ្គលិកក្នុងផ្នែកនីមួយដែលអាចធ្វើការងារនោះបាន។",
+                style: TextStyle(fontFamily: "KhmerOS", fontSize: 16),
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "អំពីខ្ញុំ",
+              style: TextStyle(fontFamily: "KhmerOSMoul"),
+            ),
+          ),
+          FadeInRightBig(
+            duration: Duration(seconds: 1),
+            child: ListTile(
+              title: Text(
+                "     ខ្ញុំឈ្មោះ គីម ផាន់ណា ជានិសិត្យដែលកំពុងសិក្សានៅ សកលវិទ្យាល័យភូមិន្ទភ្នំពេញ ផ្នែកព័ត៌មានវិទ្យា។ នេះជាកិច្ចការមុខវិទ្យាភាសា Java បញ្ចប់ឆមាសទី១​ ដែលខ្ញុំយកមកឆ្នៃ ឬ Apply ក្នុង Flutter ។",
+                style: TextStyle(fontFamily: "KhmerOS", fontSize: 16),
+              ),
+            ),
+          ),
+        ]),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 29, 2, 136),
         onPressed: () {
@@ -36,16 +78,15 @@ class _HomePageState extends State<HomePage> {
         title: Text("ទំព័រដើម",
             style: const TextStyle(
                 color: Colors.white, fontSize: 20, fontFamily: "KhmerOSMoul")),
-        leading: Icon(
-          Icons.person,
-          color: Colors.white,
+        leading: Builder(
+          builder: (context) => // Ensure Scaffold is in context
+              IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                  ),
+                  onPressed: () => Scaffold.of(context).openDrawer()),
         ),
-        actions: [
-          Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        ],
       ),
       body: Container(
         width: width,
